@@ -17,10 +17,11 @@ fn main() {
     };
     let is_regex = args.algorithm == "regex";
     let algorithm = match args.algorithm.as_str() {
+        "linear" => logic::match_pattern,
         "insensitive" => logic::match_pattern_insensitive,
         "exact" => logic::match_pattern_exact,
         "regex" => logic::match_pattern_regex,
-        _ => logic::match_pattern,
+        _ => logic::match_pattern_boyer_moore,
     };
     let re = if is_regex {
         Regex::new(term).ok()
@@ -30,8 +31,8 @@ fn main() {
     if std::path::Path::new(&args.path).is_dir() {
         let results = logic::search_directory(&args.path, term, args.recursive, algorithm);
         for (filename, line_num, line_content) in results {
-            print!("{} ", filename.cyan().bold());
             if let Some(ref r) = re {
+                print!("{} ", filename.cyan().bold());
                 let words: Vec<&str> = line_content.split_whitespace().collect();
                 for word in &words {
                     if r.is_match(word) {
@@ -46,21 +47,19 @@ fn main() {
                 let pos = words
                     .iter()
                     .position(|w| w.to_lowercase().contains(&term.to_lowercase()));
-                match pos {
-                    Some(i) => {
-                        let start = i.saturating_sub(2);
-                        let end = (i + 3).min(words.len());
-                        let context: Vec<&str> = words[start..end].to_vec();
-                        for word in &context {
-                            if word.to_lowercase().contains(&term.to_lowercase()) {
-                                print!("{} ", word.green().bold());
-                            } else {
-                                print!("{} ", word.dimmed());
-                            }
+                if let Some(i) = pos {
+                    let start = i.saturating_sub(2);
+                    let end = (i + 3).min(words.len());
+                    let context: Vec<&str> = words[start..end].to_vec();
+                    print!("{} ", filename.cyan().bold());
+                    for word in &context {
+                        if word.to_lowercase().contains(&term.to_lowercase()) {
+                            print!("{} ", word.green().bold());
+                        } else {
+                            print!("{} ", word.dimmed());
                         }
-                        println!("\t{}", format!("(line {})", line_num).white().bold());
                     }
-                    None => {}
+                    println!("\t{}", format!("(line {})", line_num).white().bold());
                 }
             }
         }
@@ -92,24 +91,21 @@ fn main() {
                 let pos = words
                     .iter()
                     .position(|w| w.to_lowercase().contains(&term.to_lowercase()));
-                match pos {
-                    Some(i) => {
-                        let start = i.saturating_sub(2);
-                        let end = (i + 3).min(words.len());
-                        let context: Vec<&str> = words[start..end].to_vec();
-                        for word in &context {
-                            if word.to_lowercase().contains(&term.to_lowercase()) {
-                                print!("{} ", word.green().bold());
-                            } else {
-                                print!("{} ", word.dimmed());
-                            }
+                if let Some(i) = pos {
+                    let start = i.saturating_sub(2);
+                    let end = (i + 3).min(words.len());
+                    let context: Vec<&str> = words[start..end].to_vec();
+                    for word in &context {
+                        if word.to_lowercase().contains(&term.to_lowercase()) {
+                            print!("{} ", word.green().bold());
+                        } else {
+                            print!("{} ", word.dimmed());
                         }
-                        println!(
-                            "\t{}",
-                            format!("(was found on line {})", line.0).white().bold()
-                        );
                     }
-                    None => {}
+                    println!(
+                        "\t{}",
+                        format!("(was found on line {})", line.0).white().bold()
+                    );
                 }
             }
         }

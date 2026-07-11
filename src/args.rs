@@ -11,7 +11,7 @@ pub struct Args {
     #[arg(short = 'p', long)]
     pub path: String,
 
-    #[arg(short = 'a', long, default_value = "linear")]
+    #[arg(short = 'a', long, default_value = "boyer-moore")]
     pub algorithm: String,
 
     #[arg(short = 'r', long, default_value_t = false)]

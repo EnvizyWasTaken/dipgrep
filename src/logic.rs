@@ -1,13 +1,22 @@
 // --- Imports ---
 use regex::Regex;
+use std::collections::HashMap;
 use std::fs::read_to_string;
 use std::io;
 
-// --- Read path function ---
+// --- Other functions ---
 
 pub fn read_path(path: &str) -> Result<String, io::Error> {
     let contents = read_to_string(path)?;
     Ok(contents)
+}
+
+fn build_bad_char_table(pattern: &str) -> HashMap<char, usize> {
+    let mut table = HashMap::new();
+    for (i, c) in pattern.chars().enumerate() {
+        table.insert(c, i);
+    }
+    table
 }
 
 // --- pattern functions ---
@@ -51,6 +60,40 @@ pub fn match_pattern_regex(pattern: &str, contents: &str) -> Vec<(usize, String)
     for (i, line) in contents.lines().enumerate() {
         if re.is_match(line) {
             result.push((i, line.to_string()))
+        }
+    }
+    result
+}
+
+pub fn match_pattern_boyer_moore(pattern: &str, contents: &str) -> Vec<(usize, String)> {
+    let mut result = Vec::new();
+    let table = build_bad_char_table(pattern);
+    let pat_len = pattern.len();
+
+    for (line_num, line) in contents.lines().enumerate() {
+        let text: Vec<char> = line.chars().collect();
+        let pat: Vec<char> = pattern.chars().collect();
+        let text_len = text.len();
+
+        let mut i = pat_len - 1;
+
+        while i < text_len {
+            let mut j = pat_len - 1;
+            let mut k = i;
+
+            while j > 0 && text[k] == pat[j] {
+                j -= 1;
+                k -= 1;
+            }
+
+            if text[k] == pat[0] {
+                //println!("DEBUG MATCH: line {} in {}", line_num, line);
+                result.push((line_num, line.to_string()));
+                break;
+            }
+
+            let skip = table.get(&text[i]).copied().unwrap_or(0);
+            i += pat_len.saturating_sub(skip + 1).max(1);
         }
     }
     result
