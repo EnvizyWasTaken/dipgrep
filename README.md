@@ -21,7 +21,12 @@ Built for terminals that deserve better than walls of text.
 
 [![Built with Rust](https://img.shields.io/badge/built%20with-Rust-orange?style=flat-square&logo=rust)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
-[![Made by envizy](https://img.shields.io/badge/made%20by-envizy-purple?style=flat-square)](https://github.com/EnvizyWasTaken)
+[![Made by EnvizyWasTaken](https://img.shields.io/badge/made%20by-EnvizyWasTaken-purple?style=flat-square)](https://github.com/EnvizyWasTaken)
+[![GitHub Stars](https://img.shields.io/github/stars/EnvizyWasTaken/dipgrep?style=flat-square&color=yellow)](https://github.com/EnvizyWasTaken/dipgrep/stargazers)
+[![Repo Size](https://img.shields.io/github/repo-size/EnvizyWasTaken/dipgrep?style=flat-square&color=informational)](https://github.com/EnvizyWasTaken/dipgrep)
+[![Last Commit](https://img.shields.io/github/last-commit/EnvizyWasTaken/dipgrep?style=flat-square&color=green)](https://github.com/EnvizyWasTaken/dipgrep/commits/main)
+[![Top Language](https://img.shields.io/github/languages/top/EnvizyWasTaken/dipgrep?style=flat-square&color=orange)](https://github.com/EnvizyWasTaken/dipgrep)
+[![Latest Release](https://img.shields.io/github/v/release/EnvizyWasTaken/dipgrep?style=flat-square&color=blue&include_prereleases)](https://github.com/EnvizyWasTaken/dipgrep/releases)
 
 </div>
 
@@ -130,5 +135,5 @@ MIT — do whatever you want with it.
 ---
 
 <div align="center">
-<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">envizy</a> — yes the chip was intentional</sub>
+<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">EnvizyWasTaken</a> — yes the chip was intentional</sub>
 </div>
