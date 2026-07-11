@@ -1,15 +1,14 @@
 <div align="center">
-
-<table border="0" cellspacing="0" cellpadding="0">
+<table border="0" cellspacing="0" cellpadding="20" style="border:0;border-collapse:collapse">
 <tr>
-<td align="center" width="200">
-<img src="assets/dipgrep_logo.svg" width="160" alt="dipgrep circuit chip logo"/>
+<td align="center" width="200" style="border:0">
+<img src="assets/dipgrep_logo.svg" width="160" alt="dipgrep circuit chip logo" style="border:0;outline:none"/>
 <br/>
 <sub><i>what i meant</i></sub>
 </td>
-<td width="60"></td>
-<td align="center" width="200">
-<img src="assets/dipgrep_chip_logo.svg" width="160" alt="dipgrep tortilla chip logo"/>
+<td width="60" style="border:0"></td>
+<td align="center" width="200" style="border:0">
+<img src="assets/dipgrep_chip_logo.svg" width="160" alt="dipgrep tortilla chip logo" style="border:0;outline:none"/>
 <br/>
 <sub><i>what i built</i></sub>
 </td>
@@ -19,6 +18,8 @@
 # dipgrep
 
 **A fast, colorful grep alternative written in Rust.**
+
+*Yes, I know. Another grep clone. But this one has a tortilla chip for a logo, highlights your matches in green, shows context instead of entire lines, and was written entirely by hand in Rust. So it's basically unrecognizable from grep.*
 
 Context-aware output. Multiple search algorithms. Directory traversal.
 Built for terminals that deserve better than walls of text.
