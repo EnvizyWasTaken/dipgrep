@@ -3,15 +3,15 @@
 <table border="0" cellspacing="0" cellpadding="0">
 <tr>
 <td align="center" width="200">
-<img src="assets/logo.svg" width="160" alt="dipgrep circuit chip logo"/>
+<img src="assets/dipgrep_logo.svg" width="160" alt="dipgrep circuit chip logo"/>
 <br/>
-<sub><i>what we meant</i></sub>
+<sub><i>what i meant</i></sub>
 </td>
 <td width="60"></td>
 <td align="center" width="200">
-<img src="assets/chip.svg" width="160" alt="dipgrep tortilla chip logo"/>
+<img src="assets/dipgrep_chip_logo.svg" width="160" alt="dipgrep tortilla chip logo"/>
 <br/>
-<sub><i>what we built</i></sub>
+<sub><i>what i built</i></sub>
 </td>
 </tr>
 </table>
