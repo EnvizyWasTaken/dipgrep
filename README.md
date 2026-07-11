@@ -1,5 +1,4 @@
 <div align="center">
-<table border="0" cellspacing="0" cellpadding="20" style="border:0;border-collapse:collapse">
 <tr>
 <td align="center" width="200" style="border:0">
 <img src="assets/dipgrep_logo.svg" width="160" alt="dipgrep circuit chip logo" style="border:0;outline:none"/>
@@ -13,7 +12,6 @@
 <sub><i>what i built</i></sub>
 </td>
 </tr>
-</table>
 
 # dipgrep
 
@@ -139,5 +137,5 @@ MIT — do whatever you want with it.
 ---
 
 <div align="center">
-<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">envizy</a> — yes the chip was intentional</sub>
+<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">envizy</a> - yes the chip was intentional</sub>
 </div>
