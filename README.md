@@ -1,17 +1,10 @@
 <div align="center">
-<tr>
-<td align="center" width="200" style="border:0">
-<img src="assets/dipgrep_logo.svg" width="160" alt="dipgrep circuit chip logo" style="border:0;outline:none"/>
-<br/>
-<sub><i>what i meant</i></sub>
-</td>
-<td width="60" style="border:0"></td>
-<td align="center" width="200" style="border:0">
-<img src="assets/dipgrep_chip_logo.svg" width="160" alt="dipgrep tortilla chip logo" style="border:0;outline:none"/>
-<br/>
-<sub><i>what i built</i></sub>
-</td>
-</tr>
+
+<img src="assets/dipgrep_logo.svg" width="220" alt="dipgrep circuit chip logo"/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="assets/dipgrep_chip_logo.svg" width="220" alt="dipgrep tortilla chip logo"/>
+
+<sub><i>what i meant &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; what i built</i></sub>
 
 # dipgrep
 
@@ -137,5 +130,5 @@ MIT — do whatever you want with it.
 ---
 
 <div align="center">
-<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">envizy</a> - yes the chip was intentional</sub>
+<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">envizy</a> — yes the chip was intentional</sub>
 </div>
