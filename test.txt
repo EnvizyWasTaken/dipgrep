@@ -1,0 +1,30 @@
+The quick brown fox jumps over the lazy dog near the river
+hello world this is a test file for the dipgrep tool
+Rust is a systems programming language focused on safety and speed
+I said hello to my friend yesterday at the park near downtown
+The weather is nice today but hello it might rain later tonight
+Programming in Rust feels like solving puzzles every single day
+Never say hello without meaning it truly and deeply
+The fox and the hound became unlikely friends over time
+hello hello hello three times for good measure and testing
+This line does not contain the search term at all whatsoever
+Rust ownership model prevents memory safety issues entirely
+Say hello when you enter and goodbye when you leave the room
+The compiler is your best friend when writing safe Rust code
+Error handling in Rust uses Result and Option types extensively
+Cargo is the package manager and build tool for Rust projects
+Pattern matching with match expressions is powerful in Rust
+hello from the other side of the terminal screen right here
+Lifetimes ensure references are always valid in Rust code
+Traits define shared behavior across different types in Rust
+The borrow checker prevents data races at compile time always
+Generic types allow writing flexible reusable code in Rust
+hello there general kenobi this is a star wars reference
+Iterators in Rust are lazy and zero cost abstractions mostly
+Smart pointers like Box and Arc manage heap memory in Rust
+Closures capture their environment and can be passed around freely
+The standard library provides many useful data structures in Rust
+hello again for the last time in this particular test file
+Systems programming has never been this safe and ergonomic before
+Writing a kernel in Rust is ambitious but completely achievable
+dipgrep is a fast colorful grep alternative written in Rust
