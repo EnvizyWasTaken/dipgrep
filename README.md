@@ -44,7 +44,8 @@ Built entirely in Rust from scratch. Every line written by hand.
 | ✂️ | **Context extraction** — 2 words before and after each match |
 | 📁 | **Directory search** — scan entire folders at once |
 | 🔁 | **Recursive mode** — dig through nested directories with `-r` |
-| 🔍 | **Four search algorithms** — linear, case-insensitive, exact word, regex |
+| ⚡ | **Boyer-Moore by default** — fast skip-based search, not naive linear |
+| 🔍 | **Five search algorithms** — boyer-moore, linear, case-insensitive, exact word, regex |
 
 ---
 
@@ -74,14 +75,15 @@ dipgrep -t <term> -p <path> [OPTIONS]
 |------|------|-------------|
 | `-t` | `--term` | Search term or regex pattern |
 | `-p` | `--path` | File or directory to search |
-| `-a` | `--algorithm` | Search algorithm (default: `linear`) |
+| `-a` | `--algorithm` | Search algorithm (default: `boyer-moore`) |
 | `-r` | `--recursive` | Recurse into subdirectories |
 
 ### Algorithms
 
 | Algorithm | Description |
 |-----------|-------------|
-| `linear` | Default. Fast substring search. |
+| `boyer-moore` | **Default.** Skip-based search, faster than linear for most inputs. |
+| `linear` | Simple substring search, left to right. |
 | `insensitive` | Case-insensitive. `HELLO` matches `hello`. |
 | `exact` | Whole word only. `log` won't match `logger`. |
 | `regex` | Full regex patterns. `hel+`, `^fn `, `(foo\|bar)`. |
@@ -91,7 +93,7 @@ dipgrep -t <term> -p <path> [OPTIONS]
 ## Examples
 
 ```bash
-# Search a file
+# Search a file (uses boyer-moore by default)
 dipgrep -t "hello" -p file.txt
 
 # Search a directory
@@ -99,6 +101,9 @@ dipgrep -t "error" -p src/
 
 # Recursive search from current directory
 dipgrep -t "todo" -p . -r
+
+# Linear search
+dipgrep -t "hello" -p file.txt -a linear
 
 # Case-insensitive
 dipgrep -t "HELLO" -p file.txt -a insensitive
@@ -131,5 +136,5 @@ MIT — do whatever you want with it.
 ---
 
 <div align="center">
-<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">EnvizyWasTaken</a> — yes the chip was intentional</sub>
+<sub>Built with 🦀 by <a href="https://github.com/EnvizyWasTaken">EnvizyWasTaken</a></sub>
 </div>
