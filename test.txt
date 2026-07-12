@@ -28,3 +28,4 @@ hello again for the last time in this particular test file
 Systems programming has never been this safe and ergonomic before
 Writing a kernel in Rust is ambitious but completely achievable
 dipgrep is a fast colorful grep alternative written in Rust
+⁝

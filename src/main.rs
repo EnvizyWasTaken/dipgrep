@@ -1,27 +1,28 @@
 mod args;
 mod logic;
 use crate::logic::read_path;
+use args::Algorithm;
 use args::Args;
 use clap::Parser;
 use colored::Colorize;
 use regex::Regex;
 
-fn main() {
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let args = Args::parse();
     let term = match &args.term {
         Some(t) => t,
         None => {
             eprintln!("Error: please provide a search term with -t");
-            return;
+            return Err("No search term provided".into());
         }
     };
-    let is_regex = args.algorithm == "regex";
-    let algorithm = match args.algorithm.as_str() {
-        "linear" => logic::match_pattern,
-        "insensitive" => logic::match_pattern_insensitive,
-        "exact" => logic::match_pattern_exact,
-        "regex" => logic::match_pattern_regex,
-        _ => logic::match_pattern_boyer_moore,
+    let is_regex = matches!(args.algorithm, args::Algorithm::Regex);
+    let algorithm_fn = match args.algorithm {
+        Algorithm::Linear => logic::match_pattern,
+        Algorithm::Insensitive => logic::match_pattern_insensitive,
+        Algorithm::Exact => logic::match_pattern_exact,
+        Algorithm::Regex => logic::match_pattern_regex,
+        Algorithm::BoyerMoore => logic::match_pattern_boyer_moore,
     };
     let re = if is_regex {
         Regex::new(term).ok()
@@ -29,7 +30,7 @@ fn main() {
         None
     };
     if std::path::Path::new(&args.path).is_dir() {
-        let results = logic::search_directory(&args.path, term, args.recursive, algorithm);
+        let results = logic::search_directory(&args.path, term, args.recursive, algorithm_fn);
         for (filename, line_num, line_content) in results {
             if let Some(ref r) = re {
                 print!("{} ", filename.cyan().bold());
@@ -68,10 +69,10 @@ fn main() {
             Ok(c) => c,
             Err(e) => {
                 eprintln!("Error: {}", e);
-                return;
+                return Err(e.into());
             }
         };
-        let results = algorithm(term, &contents);
+        let results = algorithm_fn(term, &contents);
         for line in results {
             if let Some(ref r) = re {
                 let words: Vec<&str> = line.1.split_whitespace().collect();
@@ -110,4 +111,5 @@ fn main() {
             }
         }
     }
+    Ok(())
 }

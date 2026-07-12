@@ -55,7 +55,10 @@ pub fn match_pattern_regex(pattern: &str, contents: &str) -> Vec<(usize, String)
     let mut result: Vec<(usize, String)> = Vec::new();
     let re = match Regex::new(pattern) {
         Ok(r) => r,
-        Err(_) => return vec![],
+        Err(e) => {
+            eprintln!("Error: Invalid Regex: {}", e);
+            return vec![];
+        }
     };
     for (i, line) in contents.lines().enumerate() {
         if re.is_match(line) {
@@ -66,13 +69,16 @@ pub fn match_pattern_regex(pattern: &str, contents: &str) -> Vec<(usize, String)
 }
 
 pub fn match_pattern_boyer_moore(pattern: &str, contents: &str) -> Vec<(usize, String)> {
+    if pattern.is_empty() {
+        return vec![];
+    }
     let mut result = Vec::new();
     let table = build_bad_char_table(pattern);
-    let pat_len = pattern.len();
+    let pat_len = pattern.chars().count();
+    let pat: Vec<char> = pattern.chars().collect();
 
     for (line_num, line) in contents.lines().enumerate() {
         let text: Vec<char> = line.chars().collect();
-        let pat: Vec<char> = pattern.chars().collect();
         let text_len = text.len();
 
         let mut i = pat_len - 1;
@@ -87,7 +93,6 @@ pub fn match_pattern_boyer_moore(pattern: &str, contents: &str) -> Vec<(usize, S
             }
 
             if text[k] == pat[0] {
-                //println!("DEBUG MATCH: line {} in {}", line_num, line);
                 result.push((line_num, line.to_string()));
                 break;
             }
@@ -117,7 +122,10 @@ pub fn search_directory(
     for entry in entries {
         let entry = match entry {
             Ok(e) => e,
-            Err(_) => continue,
+            Err(e) => {
+                eprintln!("Warning: could not read file: {}", e);
+                continue;
+            }
         };
         let entry_path = entry.path();
 
